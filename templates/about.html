@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - AI Chatbot</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #0f0f1a;
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+        header {
+            background: #1a1a2e;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #2a2a4a;
+        }
+        header h1 { font-size: 1.4rem; color: #7c6af7; }
+        header a { color: #7c6af7; text-decoration: none; font-size: 0.9rem; }
+        header a:hover { text-decoration: underline; }
+        .container {
+            max-width: 700px;
+            margin: 60px auto;
+            padding: 0 24px;
+        }
+        h2 { font-size: 2rem; color: #7c6af7; margin-bottom: 16px; }
+        p { line-height: 1.8; color: #aaa; margin-bottom: 16px; }
+        .badge {
+            display: inline-block;
+            background: #1e1e35;
+            border: 1px solid #2a2a4a;
+            color: #7c6af7;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin: 4px;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-top: 32px;
+            padding: 12px 24px;
+            background: #7c6af7;
+            color: white;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        .back-btn:hover { background: #6355d8; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🤖 AI Chatbot</h1>
+        <a href="/">Home</a>
+    </header>
+    <div class="container">
+        <h2>About This App</h2>
+        <p>This is an AI-powered chatbot built with <strong>FastAPI</strong> and <strong>OpenAI API</strong> via OpenRouter. It provides intelligent responses to any question you ask.</p>
+        <p>Built with:</p>
+        <div>
+            <span class="badge">🐍 Python</span>
+            <span class="badge">⚡ FastAPI</span>
+            <span class="badge">🤖 OpenAI API</span>
+            <span class="badge">🌐 OpenRouter</span>
+            <span class="badge">🎨 HTML/CSS/JS</span>
+        </div>
+        <p style="margin-top: 24px;">You can also use the <strong>/ai</strong> endpoint directly:<br>
+        <code style="background:#1e1e35; padding: 4px 8px; border-radius: 6px; color: #7c6af7;">GET /ai?prompt=your question here</code></p>
+        <a href="/" class="back-btn">← Back to Chat</a>
+    </div>
+</body>
+</html>
