@@ -1,4 +1,6 @@
+from dotenv import load_dotenv
 import os
+load_dotenv()
 from fastapi import FastAPI, Request
 from openai import OpenAI
 from fastapi.templating import Jinja2Templates
