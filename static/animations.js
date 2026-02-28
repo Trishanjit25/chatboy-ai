@@ -398,10 +398,86 @@ const ParticleBackground = {
 document.addEventListener('DOMContentLoaded', () => {
     ChatBoy.init();
     
-    // Optional: Enable particle background (comment out to disable)
-    // ParticleBackground.init();
+    // Enable particle background
+    ParticleBackground.init();
+    
+    // Initialize idle indicator
+    IdleIndicator.init();
 });
 
 // Make ChatBoy available globally for onclick handlers
 window.ChatBoy = ChatBoy;
 window.sendMessage = () => ChatBoy.sendMessage();
+
+// Idle Status Indicator
+const IdleIndicator = {
+    element: null,
+    timeoutId: null,
+    isTyping: false,
+
+    init() {
+        this.element = document.getElementById('idle-indicator');
+        this.show();
+        
+        // Listen for typing events
+        document.addEventListener('keydown', () => this.onUserActivity());
+        document.addEventListener('click', () => this.onUserActivity());
+    },
+
+    show() {
+        if (this.element && !this.isTyping) {
+            this.element.classList.add('visible');
+        }
+    },
+
+    hide() {
+        if (this.element) {
+            this.element.classList.remove('visible');
+        }
+    },
+
+    setTyping(typing) {
+        this.isTyping = typing;
+        if (typing) {
+            this.hide();
+            if (this.element) {
+                this.element.querySelector('span').textContent = 'AI is thinking...';
+                this.element.querySelector('.idle-dot').style.background = '#f59e0b';
+                this.element.querySelector('.idle-dot').style.animation = 'none';
+            }
+        } else {
+            if (this.element) {
+                this.element.querySelector('span').textContent = 'AI is ready';
+                this.element.querySelector('.idle-dot').style.background = '#10b981';
+                this.element.querySelector('.idle-dot').style.animation = 'idleGlow 2s ease-in-out infinite';
+            }
+            this.scheduleShow();
+        }
+    },
+
+    onUserActivity() {
+        this.scheduleShow();
+    },
+
+    scheduleShow() {
+        if (this.timeoutId) {
+            clearTimeout(this.timeoutId);
+        }
+        this.timeoutId = setTimeout(() => {
+            if (!this.isTyping) {
+                this.show();
+            }
+        }, 2000);
+    }
+};
+
+// Update ChatBoy to handle idle indicator
+const originalSendMessage = ChatBoy.sendMessage;
+ChatBoy.sendMessage = async function() {
+    IdleIndicator.setTyping(true);
+    try {
+        await originalSendMessage.call(this);
+    } finally {
+        IdleIndicator.setTyping(false);
+    }
+};

@@ -5,13 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat Boy - AI Chatbot</title>
     <link rel="stylesheet" href="/static/style.css">
-    <link rel="icon" href="data:🤖">
+    <!-- Favicon - SVG Robot Icon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%237c6af7'/%3E%3Cstop offset='100%25' style='stop-color:%23a78bfa'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='50' cy='50' r='45' fill='url(%23grad)'/%3E%3Ccircle cx='35' cy='40' r='8' fill='white'/%3E%3Ccircle cx='65' cy='40' r='8' fill='white'/%3E%3Ccircle cx='35' cy='40' r='4' fill='%230f0f1a'/%3E%3Ccircle cx='65' cy='40' r='4' fill='%230f0f1a'/%3E%3Cpath d='M 30 60 Q 50 75 70 60' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3Crect x='42' y='70' width='16' height='8' rx='2' fill='white'/%3E%3C/svg%3E">
 </head>
 <body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="bg-gradient"></div>
+        <div class="particles" id="particles"></div>
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+        </div>
+    </div>
+
     <!-- Header -->
     <header>
         <div class="header-logo">
-            <span class="logo-icon">🤖</span>
+            <span class="logo-icon">
+                <svg viewBox="0 0 100 100" width="32" height="32" class="robot-icon">
+                    <defs>
+                        <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#7c6af7"/>
+                            <stop offset="100%" style="stop-color:#a78bfa"/>
+                        </linearGradient>
+                    </defs>
+                    <circle cx="50" cy="50" r="45" fill="url(#logoGrad)"/>
+                    <circle cx="35" cy="40" r="8" fill="white"/>
+                    <circle cx="65" cy="40" r="8" fill="white"/>
+                    <circle cx="35" cy="40" r="4" fill="#0f0f1a"/>
+                    <circle cx="65" cy="40" r="4" fill="#0f0f1a"/>
+                    <path d="M 30 60 Q 50 75 70 60" stroke="white" stroke-width="4" fill="none" stroke-linecap="round"/>
+                    <rect x="42" y="70" width="16" height="8" rx="2" fill="white"/>
+                </svg>
+            </span>
             <h1>Chat Boy</h1>
         </div>
         <nav class="header-nav">
@@ -23,7 +52,23 @@
     <div id="chat-container">
         <!-- Welcome Message -->
         <div class="welcome-message">
-            <div class="avatar">👋</div>
+            <div class="avatar">
+                <svg viewBox="0 0 100 100" width="80" height="80" class="welcome-robot">
+                    <defs>
+                        <linearGradient id="welcomeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#7c6af7"/>
+                            <stop offset="100%" style="stop-color:#a78bfa"/>
+                        </linearGradient>
+                    </defs>
+                    <circle cx="50" cy="50" r="45" fill="url(#welcomeGrad)"/>
+                    <circle cx="35" cy="40" r="8" fill="white"/>
+                    <circle cx="65" cy="40" r="8" fill="white"/>
+                    <circle cx="35" cy="40" r="4" fill="#0f0f1a"/>
+                    <circle cx="65" cy="40" r="4" fill="#0f0f1a"/>
+                    <path d="M 30 60 Q 50 75 70 60" stroke="white" stroke-width="4" fill="none" stroke-linecap="round"/>
+                    <rect x="42" y="70" width="16" height="8" rx="2" fill="white"/>
+                </svg>
+            </div>
             <h2>Welcome to Chat Boy!</h2>
             <p>Your intelligent AI assistant. Ask me anything and I'll do my best to help you!</p>
         </div>
@@ -32,7 +77,9 @@
     <!-- Input Area -->
     <div id="input-area">
         <div class="input-wrapper">
-            <textarea id="user-input" rows="1" placeholder="Type your message... (Enter to send)"></textarea>
+            <div class="input-container">
+                <textarea id="user-input" rows="1" placeholder="Type your message... (Enter to send)"></textarea>
+            </div>
             <div class="input-footer">
                 <span class="char-counter">0/2000</span>
                 <div class="input-hints">
@@ -43,18 +90,45 @@
         </div>
         
         <div class="action-buttons">
-            <button class="action-btn" id="emoji-btn" title="Emoji (Coming soon)">😊</button>
-            <button class="action-btn" id="voice-btn" title="Voice input (Coming soon)">🎤</button>
+            <button class="action-btn" id="emoji-btn" title="Emoji (Coming soon)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+                    <line x1="9" y1="9" x2="9.01" y2="9"/>
+                    <line x1="15" y1="9" x2="15.01" y2="9"/>
+                </svg>
+            </button>
+            <button class="action-btn" id="voice-btn" title="Voice input (Coming soon)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                    <line x1="12" y1="19" x2="12" y2="23"/>
+                    <line x1="8" y1="23" x2="16" y2="23"/>
+                </svg>
+            </button>
         </div>
         
         <button id="send-btn" onclick="sendMessage()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="send-icon">
+                <line x1="22" y1="2" x2="11" y2="13"/>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+            </svg>
             <span>Send</span>
-            <span>➤</span>
         </button>
     </div>
 
+    <!-- Idle Status Indicator -->
+    <div class="idle-indicator" id="idle-indicator">
+        <div class="idle-dot"></div>
+        <span>AI is ready</span>
+    </div>
+
     <!-- Scroll to Bottom Button -->
-    <button class="scroll-indicator" id="scroll-bottom" title="Scroll to bottom">↓</button>
+    <button class="scroll-indicator" id="scroll-bottom" title="Scroll to bottom">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"/>
+        </svg>
+    </button>
 
     <!-- Toast Container -->
     <div id="toast-container"></div>

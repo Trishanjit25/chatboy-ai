@@ -56,9 +56,11 @@
     
     /* Z-index layers */
     --z-base: 1;
+    --z-bg: -1;
     --z-header: 100;
     --z-input: 100;
     --z-tooltip: 1000;
+    --z-idle: 50;
 }
 
 /* Reset & Base */
@@ -82,19 +84,155 @@ body {
     overflow-x: hidden;
 }
 
-/* Animated Background */
-body::before {
-    content: '';
+/* ============================================
+   Animated Background Effects
+   ============================================ */
+.bg-animation {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: 
-        radial-gradient(circle at 20% 80%, rgba(124, 106, 247, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(167, 139, 250, 0.08) 0%, transparent 50%);
+    z-index: var(--z-bg);
+    overflow: hidden;
     pointer-events: none;
-    z-index: 0;
+}
+
+.bg-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(ellipse at 20% 80%, rgba(124, 106, 247, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(167, 139, 250, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(124, 106, 247, 0.05) 0%, transparent 70%),
+        var(--gradient-bg);
+    animation: gradientShift 15s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% {
+        background-position: 0% 50%, 100% 50%, 50% 50%, 0% 0%;
+        opacity: 1;
+    }
+    25% {
+        background-position: 100% 50%, 0% 50%, 50% 50%, 0% 0%;
+        opacity: 0.8;
+    }
+    50% {
+        background-position: 100% 100%, 0% 0%, 50% 50%, 0% 100%;
+        opacity: 1;
+    }
+    75% {
+        background-position: 0% 100%, 100% 0%, 50% 50%, 100% 100%;
+        opacity: 0.9;
+    }
+}
+
+/* Floating Shapes */
+.floating-shapes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.1;
+    filter: blur(40px);
+    animation: float 20s ease-in-out infinite;
+}
+
+.shape-1 {
+    width: 300px;
+    height: 300px;
+    background: var(--primary-color);
+    top: -100px;
+    left: -100px;
+    animation-delay: 0s;
+}
+
+.shape-2 {
+    width: 400px;
+    height: 400px;
+    background: #a78bfa;
+    bottom: -150px;
+    right: -100px;
+    animation-delay: -5s;
+}
+
+.shape-3 {
+    width: 200px;
+    height: 200px;
+    background: #6366f1;
+    top: 50%;
+    left: 50%;
+    animation-delay: -10s;
+}
+
+.shape-4 {
+    width: 250px;
+    height: 250px;
+    background: #8b5cf6;
+    top: 20%;
+    right: 20%;
+    animation-delay: -15s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    25% {
+        transform: translate(30px, -30px) scale(1.1);
+    }
+    50% {
+        transform: translate(-20px, 20px) scale(0.9);
+    }
+    75% {
+        transform: translate(20px, 30px) scale(1.05);
+    }
+}
+
+/* Particles */
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    opacity: 0.3;
+    animation: particleFloat 15s linear infinite;
+}
+
+@keyframes particleFloat {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.3;
+    }
+    90% {
+        opacity: 0.3;
+    }
+    100% {
+        transform: translateY(-100vh) rotate(720deg);
+        opacity: 0;
+    }
 }
 
 /* ============================================
@@ -885,4 +1023,77 @@ header {
 
 .toast.error {
     border-color: #ef4444;
+}
+
+/* ============================================
+   Idle Status Indicator
+   ============================================ */
+.idle-indicator {
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border-color);
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    z-index: var(--z-idle);
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+    animation: idlePulse 2s ease-in-out infinite;
+}
+
+.idle-indicator.visible {
+    opacity: 1;
+}
+
+.idle-dot {
+    width: 8px;
+    height: 8px;
+    background: #10b981;
+    border-radius: var(--radius-full);
+    animation: idleGlow 2s ease-in-out infinite;
+}
+
+@keyframes idleGlow {
+    0%, 100% {
+        box-shadow: 0 0 5px #10b981, 0 0 10px rgba(16, 185, 129, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 10px #10b981, 0 0 20px rgba(16, 185, 129, 0.5);
+    }
+}
+
+@keyframes idlePulse {
+    0%, 100% {
+        transform: translateX(-50%) scale(1);
+    }
+    50% {
+        transform: translateX(-50%) scale(1.02);
+    }
+}
+
+/* ============================================
+   Enhanced Robot Icon
+   ============================================ */
+.robot-icon,
+.welcome-robot {
+    filter: drop-shadow(0 0 10px rgba(124, 106, 247, 0.5));
+    animation: robotFloat 3s ease-in-out infinite;
+}
+
+@keyframes robotFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
 }

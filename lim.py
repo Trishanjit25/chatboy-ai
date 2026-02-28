@@ -1,35 +1,32 @@
-# from openai import OpenAI
-
-# client = OpenAI(
-#   base_url="https://openrouter.ai/api/v1",
-#   api_key="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",
-# )
-
-# completion = client.chat.completions.create(
-#   model="openai/gpt-oss-120b:free",
-#   messages=[
-#     {
-#       "role": "user",
-#       "content": "What is the meaning of life?"
-#     }
-#   ]
-# )
-
-# print(completion.choices[0].message.content)
-
+# CLI version of Chat Boy AI Chatbot
+# Usage: python lim.py
 
 from openai import OpenAI
+import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
+
+# Get API key from environment variable
+api_key = os.getenv("OPENROUTER_API_KEY")
+
+if not api_key:
+    print("Error: OPENROUTER_API_KEY not found in .env file!")
+    print("Please create a .env file with your API key.")
+    print("Get your free API key from: https://openrouter.ai/keys")
+    exit(1)
 
 client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
-    api_key="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")   # ⚠️ Never expose real keys publicly
-
+    api_key=api_key
+)
 
 # Take user input
 user_input = input("Ask something: ")
 
 completion = client.chat.completions.create(
-    model="openai/gpt-oss-120b:free",
+    model="google/gemma-3-4b-it:free",
     messages=[
         {
             "role": "user",
