@@ -22,7 +22,7 @@ from openai import OpenAI
 
 client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
-    api_key="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")   # ⚠️ Never expose real keys publicly
+    api_key="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")   # ⚠️ Never expose real keys publicly
 
 
 # Take user input

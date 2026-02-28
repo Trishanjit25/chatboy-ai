@@ -3,76 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - AI Chatbot</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background: #0f0f1a;
-            color: #e0e0e0;
-            min-height: 100vh;
-        }
-        header {
-            background: #1a1a2e;
-            padding: 16px 24px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid #2a2a4a;
-        }
-        header h1 { font-size: 1.4rem; color: #7c6af7; }
-        header a { color: #7c6af7; text-decoration: none; font-size: 0.9rem; }
-        header a:hover { text-decoration: underline; }
-        .container {
-            max-width: 700px;
-            margin: 60px auto;
-            padding: 0 24px;
-        }
-        h2 { font-size: 2rem; color: #7c6af7; margin-bottom: 16px; }
-        p { line-height: 1.8; color: #aaa; margin-bottom: 16px; }
-        .badge {
-            display: inline-block;
-            background: #1e1e35;
-            border: 1px solid #2a2a4a;
-            color: #7c6af7;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            margin: 4px;
-        }
-        .back-btn {
-            display: inline-block;
-            margin-top: 32px;
-            padding: 12px 24px;
-            background: #7c6af7;
-            color: white;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background 0.2s;
-        }
-        .back-btn:hover { background: #6355d8; }
-    </style>
+    <title>About - Chat Boy</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="icon" href="data:🤖">
 </head>
 <body>
+    <!-- Header -->
     <header>
-        <h1>🤖 AI Chatbot</h1>
-        <a href="/">Home</a>
-    </header>
-    <div class="container">
-        <h2>About This App</h2>
-        <p>This is an AI-powered chatbot built with <strong>FastAPI</strong> and <strong>OpenAI API</strong> via OpenRouter. It provides intelligent responses to any question you ask.</p>
-        <p>Built with:</p>
-        <div>
-            <span class="badge">🐍 Python</span>
-            <span class="badge">⚡ FastAPI</span>
-            <span class="badge">🤖 OpenAI API</span>
-            <span class="badge">🌐 OpenRouter</span>
-            <span class="badge">🎨 HTML/CSS/JS</span>
+        <div class="header-logo">
+            <span class="logo-icon">🤖</span>
+            <h1>Chat Boy</h1>
         </div>
-        <p style="margin-top: 24px;">You can also use the <strong>/ai</strong> endpoint directly:<br>
-        <code style="background:#1e1e35; padding: 4px 8px; border-radius: 6px; color: #7c6af7;">GET /ai?prompt=your question here</code></p>
-        <a href="/" class="back-btn">← Back to Chat</a>
+        <nav class="header-nav">
+            <a href="/">Chat</a>
+        </nav>
+    </header>
+
+    <!-- About Content -->
+    <div class="about-container">
+        <div class="about-card">
+            <div class="about-header">
+                <h1>About Chat Boy</h1>
+                <p>Your intelligent AI assistant powered by cutting-edge technology</p>
+            </div>
+
+            <div class="about-section">
+                <h2>🚀 Overview</h2>
+                <p>
+                    Chat Boy is an AI-powered chatbot built with <strong>FastAPI</strong> and integrated with 
+                    <strong>OpenAI API</strong> via OpenRouter. It provides intelligent, context-aware responses 
+                    to any question you ask, making it your personal AI assistant.
+                </p>
+                <p>
+                    Whether you need help with coding, writing, brainstorming, or just want to have a conversation, 
+                    Chat Boy is here to assist you!
+                </p>
+            </div>
+
+            <div class="about-section">
+                <h2>💻 Built With</h2>
+                <div class="tech-badges">
+                    <span class="badge">🐍 Python</span>
+                    <span class="badge">⚡ FastAPI</span>
+                    <span class="badge">🤖 OpenAI API</span>
+                    <span class="badge">🌐 OpenRouter</span>
+                    <span class="badge">🎨 HTML/CSS/JS</span>
+                </div>
+            </div>
+
+            <div class="about-section">
+                <h2>🔌 API Endpoint</h2>
+                <p>You can also use the <strong>/ai</strong> endpoint directly to get AI responses:</p>
+                <div class="code-block">
+                    <code>GET /ai?prompt=your question here</code>
+                </div>
+                <p>
+                    Example response format:
+                </p>
+                <div class="code-block">
+                    <code>{"response": "Your AI response here"}</code>
+                </div>
+            </div>
+
+            <div class="about-section">
+                <h2>✨ Features</h2>
+                <ul style="color: var(--text-secondary); line-height: 2; margin-left: var(--spacing-lg);">
+                    <li>🤖 Intelligent AI-powered responses</li>
+                    <li>💬 Real-time chat interface</li>
+                    <li>📱 Responsive design</li>
+                    <li>🎨 Modern dark theme with animations</li>
+                    <li>⌨️ Keyboard shortcuts</li>
+                    <li>📋 Copy messages to clipboard</li>
+                </ul>
+            </div>
+
+            <a href="/" class="back-btn">
+                <span>←</span>
+                <span>Back to Chat</span>
+            </a>
+        </div>
     </div>
+
+    <script>
+        // Simple entrance animation for about page
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.about-card, .badge');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.5s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
 </body>
 </html>
