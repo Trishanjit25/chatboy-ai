@@ -9,19 +9,27 @@ Chat Boy is an intelligent AI-powered chatbot web application built with FastAPI
 
 ## ✨ Features
 
-- **AI-Powered Responses**: Leverages Google Gemma-3-4b-it model via OpenRouter API
-- **Modern UI**: Glassmorphism design with smooth animations
-- **Real-time Chat**: Instant AI responses with typing indicators
-- **Message Features**:
+- **🤖 AI-Powered Responses**: Leverages Google Gemma-3-4b-it model via OpenRouter API
+- **🎨 Modern UI**: Glassmorphism design with smooth animations and particle effects
+- **♿ Accessibility First**: WCAG compliant with screen reader support, keyboard navigation, and reduced motion options
+- **⚡ Real-time Chat**: Instant AI responses with typing indicators and character-by-character animation
+- **📱 Responsive Design**: Mobile-first approach with adaptive layouts
+- **🔒 Secure**: Environment variable configuration for API keys
+- **🌙 Dark Mode**: Enhanced dark theme with high contrast support
+- **📋 Message Features**:
   - Copy messages to clipboard
   - Timestamps for each message
   - Character counter (2000 limit)
-- **Keyboard Shortcuts**:
+  - Auto-resizing textarea
+- **⌨️ Keyboard Shortcuts**:
   - `Enter` - Send message
   - `Ctrl+Enter` - New line
-- **Responsive Design**: Works seamlessly on desktop and mobile
-- **Toast Notifications**: Feedback for user actions
-- **Scroll Indicator**: Quick scroll to bottom button
+  - `Escape` - Clear input
+- **🔔 User Feedback**:
+  - Toast notifications for actions
+  - Scroll indicator for long conversations
+  - Idle status indicator
+  - Loading states and error handling
 
 ## 🛠️ Tech Stack
 
@@ -66,15 +74,21 @@ bash
 
 4. **Configure environment variables**
    
-   Create a `.env` file in the root directory:
+   Create a `.env` file in root directory (this file is already in `.gitignore` for security):
    
+```env
+   # OpenRouter API Configuration
+   OPENROUTER_API_KEY=your_openrouter_api_key_here
+   
+   # Application Configuration
+   APP_NAME=ChatBoy AI
+   APP_VERSION=1.0.0
+   DEBUG=false
 ```
-env
-   OPENROUTER_API_KEY=your_api_key_here
    
-```
+   🔐 **Security Note**: Get your free API key from [OpenRouter](https://openrouter.ai/keys)
    
-   Get your free API key from [OpenRouter](https://openrouter.ai/keys)
+   The `.env` file is automatically excluded from git commits to protect your API keys.
 
 5. **Run the application**
    
@@ -119,26 +133,46 @@ chatboy/
 ## 🎨 UI Features
 
 ### Glassmorphism Design
-- Translucent chat container
-- Frosted glass effects
-- Subtle blur backgrounds
+- Translucent chat container with backdrop blur
+- Frosted glass effects on header and input areas
+- Subtle blur backgrounds with particle animations
+- Floating shapes for visual depth
 
-### Animations
-- Smooth message slide-in effects
-- Typing indicator with dots
-- Button hover effects
+### Advanced Animations
+- Smooth message slide-in effects with staggered timing
+- Typing indicator with animated dots
+- Button hover effects with shimmer animations
 - Toast notification animations
+- Particle background with connected nodes
+- Robot icon floating animation
 
-### Responsive Layout
-- Mobile-friendly design
-- Adaptive chat container
-- Touch-friendly buttons
+### Responsive & Adaptive Layout
+- Mobile-first design approach
+- Adaptive chat container for all screen sizes
+- Touch-friendly buttons and inputs
+- Flexible input area on mobile devices
+- Optimized typography scaling
 
-## 🔐 Security Notes
+## 🔐 Security & Best Practices
 
-- API keys are stored in environment variables (never commit them!)
-- The `.env` file is included in `.gitignore`
-- For production, use secure secret management
+### Environment Variables
+- ✅ API keys are stored in `.env` file (never committed to git)
+- ✅ `.env` is included in `.gitignore` by default
+- ✅ Use `.env.example` as a template for required variables
+
+### Production Security
+- 🔒 Use environment-specific secret management (AWS Secrets Manager, etc.)
+- 🔒 Enable HTTPS in production
+- 🔒 Implement rate limiting
+- 🔒 Add CORS configuration as needed
+
+### Accessibility Features
+- 🎯 WCAG 2.1 AA compliant
+- 🎯 Screen reader support with ARIA labels
+- 🎯 Keyboard navigation support
+- 🎯 High contrast mode support
+- 🎯 Reduced motion support for users with vestibular disorders
+- 🎯 Skip links for keyboard users
 
 ## 🧪 Testing
 

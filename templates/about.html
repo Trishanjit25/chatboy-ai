@@ -8,6 +8,21 @@
     <link rel="icon" href="data:🤖">
 </head>
 <body>
+    <!-- Background Animation -->
+    <div class="bg-animation">
+        <div class="bg-gradient"></div>
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+        </div>
+        <div class="particles" id="particles-js"></div>
+    </div>
+
+    <!-- Skip to main content for accessibility -->
+    <a href="#about-container" class="skip-link">Skip to main content</a>
+    
     <!-- Header -->
     <header>
         <div class="header-logo">
@@ -20,7 +35,7 @@
     </header>
 
     <!-- About Content -->
-    <div class="about-container">
+    <main id="about-container" class="about-container" role="main" aria-label="About Chat Boy">
         <div class="about-card">
             <div class="about-header">
                 <h1>About Chat Boy</h1>
@@ -84,19 +99,31 @@
         </div>
     </div>
 
+    <!-- Particle Animation Script -->
+    <script src="/static/animations.js"></script>
     <script>
-        // Simple entrance animation for about page
+        // Classic Entrance Animations
         document.addEventListener('DOMContentLoaded', () => {
-            const cards = document.querySelectorAll('.about-card, .badge');
+            const cards = document.querySelectorAll('.about-card, .about-section, .badge');
             cards.forEach((card, index) => {
                 card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
+                card.style.transform = 'translateY(30px) scale(0.95)';
                 setTimeout(() => {
-                    card.style.transition = 'all 0.5s ease';
+                    // Classic smooth cubic-bezier timing
+                    card.style.transition = 'opacity 0.6s ease-out, transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
                     card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }, index * 100);
+                    card.style.transform = 'translateY(0) scale(1)';
+                }, index * 120);
             });
+            
+            // Clean up old transition overrides so hover effects work properly
+            setTimeout(() => {
+                cards.forEach(card => {
+                    card.style.transition = '';
+                    card.style.opacity = '';
+                    card.style.transform = '';
+                });
+            }, cards.length * 120 + 700);
         });
     </script>
 </body>

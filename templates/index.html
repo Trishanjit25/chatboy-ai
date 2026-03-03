@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat Boy - AI Chatbot</title>
     <link rel="stylesheet" href="/static/style.css">
     <!-- Favicon - SVG Robot Icon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%237c6af7'/%3E%3Cstop offset='100%25' style='stop-color:%23a78bfa'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='50' cy='50' r='45' fill='url(%23grad)'/%3E%3Ccircle cx='35' cy='40' r='8' fill='white'/%3E%3Ccircle cx='65' cy='40' r='8' fill='white'/%3E%3Ccircle cx='35' cy='40' r='4' fill='%230f0f1a'/%3E%3Ccircle cx='65' cy='40' r='4' fill='%230f0f1a'/%3E%3Cpath d='M 30 60 Q 50 75 70 60' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3Crect x='42' y='70' width='16' height='8' rx='2' fill='white'/%3E%3C/svg%3E">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%237c6af7'/%3E%3Cstop offset='100%25' style='stop-color:%23a78bfa'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='50' cy='50' r='45' fill='url(%23grad)'/%3E%3Ccircle cx='35' cy='40' r='8' fill='white'/%3E%3Ccircle cx='65' cy='40' r='8' fill='white'/%3E%3Ccircle cx='35' cy='40' r='4' fill='%230f0f1a'/%3E%3Ccircle cx='65' cy='40' r='4' fill='%230f0f1a'/%3E%3Cpath d='M 30 60 Q 50 75 70 60' stroke='white' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3Crect x='42' y='70' width='16' height='8' rx='2' fill='white'/%3E%3C/svg%3E">
 </head>
+
 <body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#chat-container" class="skip-link">Skip to main content</a>
+
     <!-- Animated Background -->
     <div class="bg-animation">
         <div class="bg-gradient"></div>
@@ -25,23 +31,23 @@
     <header>
         <div class="header-logo">
             <span class="logo-icon">
-                <svg viewBox="0 0 100 100" width="32" height="32" class="robot-icon">
+                <svg viewBox="0 0 100 100" width="28" height="28" class="robot-icon">
                     <defs>
-                        <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#7c6af7"/>
-                            <stop offset="100%" style="stop-color:#a78bfa"/>
+                        <linearGradient id="logoGrad" x1="10%" y1="10%" x2="90%" y2="90%">
+                            <stop offset="0%" style="stop-color:#a78bfa" />
+                            <stop offset="50%" style="stop-color:#7c6af7" />
+                            <stop offset="100%" style="stop-color:#5a48d1" />
                         </linearGradient>
                     </defs>
-                    <circle cx="50" cy="50" r="45" fill="url(#logoGrad)"/>
-                    <circle cx="35" cy="40" r="8" fill="white"/>
-                    <circle cx="65" cy="40" r="8" fill="white"/>
-                    <circle cx="35" cy="40" r="4" fill="#0f0f1a"/>
-                    <circle cx="65" cy="40" r="4" fill="#0f0f1a"/>
-                    <path d="M 30 60 Q 50 75 70 60" stroke="white" stroke-width="4" fill="none" stroke-linecap="round"/>
-                    <rect x="42" y="70" width="16" height="8" rx="2" fill="white"/>
+                    <path d="M 50 15 L 80 50 L 50 85 L 20 50 Z" fill="url(#logoGrad)" />
+                    <circle cx="50" cy="50" r="14" fill="#1e1e35" />
+                    <circle cx="50" cy="50" r="6" fill="#white" />
                 </svg>
             </span>
-            <h1>Chat Boy</h1>
+            <h1>ChatBoy</h1>
+            <button class="pro-badge">
+                Pro <span class="dropdown-arrow">▼</span>
+            </button>
         </div>
         <nav class="header-nav">
             <a href="/about">About</a>
@@ -49,73 +55,118 @@
     </header>
 
     <!-- Chat Container -->
-    <div id="chat-container">
-        <!-- Welcome Message -->
-        <div class="welcome-message">
-            <div class="avatar">
-                <svg viewBox="0 0 100 100" width="80" height="80" class="welcome-robot">
-                    <defs>
-                        <linearGradient id="welcomeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#7c6af7"/>
-                            <stop offset="100%" style="stop-color:#a78bfa"/>
-                        </linearGradient>
-                    </defs>
-                    <circle cx="50" cy="50" r="45" fill="url(#welcomeGrad)"/>
-                    <circle cx="35" cy="40" r="8" fill="white"/>
-                    <circle cx="65" cy="40" r="8" fill="white"/>
-                    <circle cx="35" cy="40" r="4" fill="#0f0f1a"/>
-                    <circle cx="65" cy="40" r="4" fill="#0f0f1a"/>
-                    <path d="M 30 60 Q 50 75 70 60" stroke="white" stroke-width="4" fill="none" stroke-linecap="round"/>
-                    <rect x="42" y="70" width="16" height="8" rx="2" fill="white"/>
-                </svg>
-            </div>
-            <h2>Welcome to Chat Boy!</h2>
-            <p>Your intelligent AI assistant. Ask me anything and I'll do my best to help you!</p>
-        </div>
-    </div>
+    <main id="chat-container" role="main" aria-label="Chat conversation">
+        <!-- Gemini-Style Greeting Area -->
+        <div class="gemini-greeting-area" id="welcome-area">
+            <h2 class="gradient-hello">Hello, User</h2>
+            <h3 class="gradient-sub">How can I help you today?</h3>
 
-    <!-- Input Area -->
-    <div id="input-area">
-        <div class="input-wrapper">
-            <div class="input-container">
-                <textarea id="user-input" rows="1" placeholder="Type your message... (Enter to send)"></textarea>
+            <!-- Suggestion Cards -->
+            <div class="suggestion-grid">
+                <button class="suggestion-card"
+                    onclick="ChatBoy.useSuggestion('Write a python script to parse CSV files')">
+                    <span class="suggestion-icon">🐍</span>
+                    <p>Write a python script to parse CSV files</p>
+                </button>
+                <button class="suggestion-card"
+                    onclick="ChatBoy.useSuggestion('Explain quantum computing to a 5 year old')">
+                    <span class="suggestion-icon">🧠</span>
+                    <p>Explain quantum computing to a 5 year old</p>
+                </button>
+                <button class="suggestion-card"
+                    onclick="ChatBoy.useSuggestion('Help me prepare for a software engineering interview')">
+                    <span class="suggestion-icon">💼</span>
+                    <p>Help me prepare for an engineering interview</p>
+                </button>
+                <button class="suggestion-card"
+                    onclick="ChatBoy.useSuggestion('Give me 5 creative ideas for a weekend project')">
+                    <span class="suggestion-icon">💡</span>
+                    <p>Give me 5 creative ideas for a weekend project</p>
+                </button>
             </div>
-            <div class="input-footer">
-                <span class="char-counter">0/2000</span>
-                <div class="input-hints">
-                    <span><kbd>Enter</kbd> Send</span>
-                    <span><kbd>Ctrl+Enter</kbd> New line</span>
+        </div>
+    </main>
+
+    <!-- Input Area Setup (ChatGPT Style) -->
+    <footer id="input-area" role="contentinfo" aria-label="Message input area">
+        <div class="chat-input-container">
+
+            <!-- In-place File Info Display -->
+            <div id="file-info" class="file-info-inline" style="display: none;">
+                <div class="file-info-content">
+                    <span class="file-icon">📎</span>
+                    <span class="file-name"></span>
+                    <button class="file-remove" aria-label="Remove file">×</button>
+                </div>
+            </div>
+
+            <!-- Text Area -->
+            <div class="input-wrapper">
+                <textarea id="user-input" rows="1" placeholder="Type your message..." aria-label="Type your message"
+                    aria-describedby="input-hints" maxlength="2000"></textarea>
+            </div>
+
+            <!-- Actions Footer -->
+            <div class="input-actions">
+                <div class="action-buttons-left">
+                    <button class="action-btn" id="file-btn" title="Upload file" aria-label="Upload file">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="17 8 12 3 7 8" />
+                            <line x1="12" y1="3" x2="12" y2="15" />
+                        </svg>
+                        <input type="file" id="file-input"
+                            accept=".txt,.md,.py,.js,.html,.css,.json,.csv,.pdf,.png,.jpg,.jpeg,.gif,.webm,.wav,.mp3,.ogg"
+                            style="display: none;">
+                    </button>
+                    <button class="action-btn" id="voice-btn" title="Voice input" aria-label="Start voice input">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+                            <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                            <line x1="12" y1="19" x2="12" y2="23" />
+                            <line x1="8" y1="23" x2="16" y2="23" />
+                        </svg>
+                    </button>
+                    <button class="action-btn" id="emoji-btn" title="Add emoji" aria-label="Emoji picker">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+                            <line x1="9" y1="9" x2="9.01" y2="9" />
+                            <line x1="15" y1="9" x2="15.01" y2="9" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="action-buttons-right">
+                    <span class="char-counter">0/2000</span>
+                    <button id="send-btn" onclick="sendMessage()" aria-label="Send message">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" class="send-icon">
+                            <line x1="22" y1="2" x2="11" y2="13" />
+                            <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                        </svg>
+                        <span class="btn-text">Send</span>
+                    </button>
+                    <!-- Stop Generation Button -->
+                    <button id="stop-btn" onclick="ChatBoy.stopGeneration()" aria-label="Stop generation"
+                        style="display: none;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <rect x="6" y="6" width="12" height="12" rx="2"></rect>
+                        </svg>
+                        <span class="btn-text">Stop</span>
+                    </button>
                 </div>
             </div>
         </div>
-        
-        <div class="action-buttons">
-            <button class="action-btn" id="emoji-btn" title="Emoji (Coming soon)">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10"/>
-                    <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
-                    <line x1="9" y1="9" x2="9.01" y2="9"/>
-                    <line x1="15" y1="9" x2="15.01" y2="9"/>
-                </svg>
-            </button>
-            <button class="action-btn" id="voice-btn" title="Voice input (Coming soon)">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
-                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
-                    <line x1="12" y1="19" x2="12" y2="23"/>
-                    <line x1="8" y1="23" x2="16" y2="23"/>
-                </svg>
-            </button>
+
+        <div class="input-hints" id="input-hints">
+            <span><kbd>Enter</kbd> Send</span>
+            <span><kbd>Shift+Enter</kbd> New line</span>
         </div>
-        
-        <button id="send-btn" onclick="sendMessage()">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="send-icon">
-                <line x1="22" y1="2" x2="11" y2="13"/>
-                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-            </svg>
-            <span>Send</span>
-        </button>
-    </div>
+    </footer>
 
     <!-- Idle Status Indicator -->
     <div class="idle-indicator" id="idle-indicator">
@@ -123,10 +174,22 @@
         <span>AI is ready</span>
     </div>
 
+    <!-- Voice Indicator -->
+    <div id="voice-indicator" class="voice-indicator" style="display: none;">
+        <div class="voice-animation">
+            <div class="voice-bar"></div>
+            <div class="voice-bar"></div>
+            <div class="voice-bar"></div>
+            <div class="voice-bar"></div>
+            <div class="voice-bar"></div>
+        </div>
+        <span class="voice-text">Listening...</span>
+    </div>
+
     <!-- Scroll to Bottom Button -->
     <button class="scroll-indicator" id="scroll-bottom" title="Scroll to bottom">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="6 9 12 15 18 9"/>
+            <polyline points="6 9 12 15 18 9" />
         </svg>
     </button>
 
@@ -135,4 +198,5 @@
 
     <script src="/static/animations.js"></script>
 </body>
+
 </html>
