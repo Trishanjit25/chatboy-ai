@@ -1,6 +1,7 @@
 # 🤖 Chat Boy - AI Chatbot
 
 Chat Boy is an intelligent AI-powered chatbot web application built with FastAPI and integrated with OpenRouter's AI models. It provides a modern, responsive chat interface with smooth animations and a delightful user experience.
+Link https://chatboy-ai.onrender.com
 
 ![Chat Boy](https://img.shields.io/badge/ChatBoy-AI%20Chatbot-blue?style=for-the-badge&logo=robot)
 ![Python](https://img.shields.io/badge/Python-3.11+-green?style=flat-square&logo=python)
